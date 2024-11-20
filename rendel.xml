@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="style1.xsl"?>
+<profile>
+    <name>Santos, Rendel D.</name>
+    <bio>Welcome to my exclusive profile. I am passionate about technology and design, aiming to bring an innovative touch to every project.</bio>
+    <contact>
+        <email>santos.rendel2602@gmail.com</email>
+        <phone>+639764674509</phone>
+    </contact>
+    <portfolio>
+        <project name="Luxury Website Design" year="2024">
+            <description>Developed a stunning, high-end website that reflects luxury and sophistication.</description>
+        </project>
+        <project name="Mobile App" year="2023">
+            <description>Created a mobile application with an elegant user interface, offering seamless user experiences.</description>
+        </project>
+    </portfolio>
+</profile>
