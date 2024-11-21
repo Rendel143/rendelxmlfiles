@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoy HAHAHAHA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style26.css">
+</head>
+<body>
+    <!-- Confirmation Section -->
+    <div id="confirmation">
+        <p class="question">Pogi ba ako?</p>
+        <button id="yesButton">Yes</button>
+        <button class="noButton">No</button>  <!-- First No button -->
+    </div>
+
+    <!-- Footer with your name -->
+    <footer>
+        <p>Created by Rendel Santos</p>
+    </footer>
+
+    <!-- Hand arrow (Pointing Finger) -->
+    <div id="arrow" class="arrow">
+        👉 <!-- Pointing finger emoji -->
+    </div>
+
+    <script>
+        // JavaScript for button functionality
+        document.getElementById('yesButton').addEventListener('click', function() {
+            window.location.href = 'luhnagyes.html';  // Redirect to the main content page
+        });
+
+        // Function to add another "No" button randomly on the screen
+        function addNoButton() {
+            const noButton = document.createElement('button');
+            noButton.classList.add('noButton');
+            noButton.textContent = 'No';
+            document.body.appendChild(noButton); // Append to the body so it can appear anywhere on the screen
+            
+            // Position the button randomly
+            const randomTop = Math.random() * (window.innerHeight - 50); // Random top position
+            const randomLeft = Math.random() * (window.innerWidth - 150); // Random left position
+            noButton.style.position = 'absolute'; // Make the button position absolute
+            noButton.style.top = `${randomTop}px`;
+            noButton.style.left = `${randomLeft}px`;
+
+            // Add event listener to the new "No" button
+            noButton.addEventListener('click', function() {
+                addNoButton();  // Add another "No" button without alert
+            });
+        }
+
+        // Event listener for the initial "No" button
+        document.querySelector('.noButton').addEventListener('click', function() {
+            addNoButton();  // Add another "No" button at a random position
+
+            // Animate the arrow to point at the "Yes" button (left side)
+            startContinuousArrowMovement();
+        });
+
+        // Function to continuously move the arrow pointing at "Yes"
+        function startContinuousArrowMovement() {
+            const arrow = document.getElementById('arrow');
+            const yesButton = document.getElementById('yesButton');
+
+            // Get the position of the "Yes" button
+            const yesButtonRect = yesButton.getBoundingClientRect();
+
+            // Set the arrow's initial visibility and position
+            arrow.style.visibility = 'visible'; // Make sure the arrow is visible
+            arrow.style.position = 'absolute';
+            arrow.style.transition = 'none'; // Remove transition for continuous movement
+
+            // Function to keep the arrow pointing at the "Yes" button
+            setInterval(() => {
+                // Update arrow's position based on the "Yes" button's current position
+                const yesButtonRect = yesButton.getBoundingClientRect();
+
+                arrow.style.top = `${yesButtonRect.top + yesButtonRect.height / 2 - 20}px`;  // Vertically centered next to the "Yes" button
+                arrow.style.left = `${yesButtonRect.left - 40}px`;  // Positioned 40px to the left of the button
+            }, 10); // Update the position every 10ms (for smoothness)
+        }
+    </script>
+</body>
+</html>
